@@ -14,5 +14,19 @@ namespace ZZL.LeaveMessage.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
+
+
+       
+
+
+        protected void Application_AuthenicateRequest(object sender, EventArgs e)
+        {
+           
+            HttpApplication app = (HttpApplication)sender;
+            if (Request.Url.ToString().Contains("log.axd"))
+            {
+                
+            }
+        }
     }
 }

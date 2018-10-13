@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -89,11 +92,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Error.html" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -111,8 +117,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZZL.LeaveMessage.Common\ZZL.LeaveMessage.Common.csproj">
+      <Project>{374e3348-3b0c-46f2-b462-3f207f961cd4}</Project>
+      <Name>ZZL.LeaveMessage.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZZL.LeaveMessage.Entity\ZZL.LeaveMessage.Entity.csproj">
+      <Project>{94a5a5d1-0501-49b8-ac34-09d5fc2556f9}</Project>
+      <Name>ZZL.LeaveMessage.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZZL.LeaveMessage.IService\ZZL.LeaveMessage.IService.csproj">
+      <Project>{00393d4f-cf0f-447d-ae4c-9ef98ebda6c7}</Project>
+      <Name>ZZL.LeaveMessage.IService</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
