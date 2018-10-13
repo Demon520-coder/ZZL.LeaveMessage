@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
+using ZZL.LeaveMessage.Web.App_Start;
 
 namespace ZZL.LeaveMessage.Web
 {
@@ -13,20 +15,10 @@ namespace ZZL.LeaveMessage.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-        }
-
-
-       
-
-
-        protected void Application_AuthenicateRequest(object sender, EventArgs e)
-        {
-           
-            HttpApplication app = (HttpApplication)sender;
-            if (Request.Url.ToString().Contains("log.axd"))
-            {
-                
-            }
-        }
+            BindConfig.RegisterBundle(BundleTable.Bundles);
+            //autofac注入
+            AutofacHelper autoFac = new AutofacHelper();
+            autoFac.Register();
+        }      
     }
 }

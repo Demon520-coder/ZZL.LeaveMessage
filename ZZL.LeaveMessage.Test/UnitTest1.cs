@@ -32,6 +32,7 @@ namespace ZZL.LeaveMessage.Test
             var user = _userService.GetUserById(1);
             //var rows = _userService.AddUser(new UserEntity() { UserName = "zzl", Pwd = "123456" });
             //Assert.IsTrue(rows == 1);
+            var name =typeof(MessageService).Assembly.GetName().Name;
         }
 
 
