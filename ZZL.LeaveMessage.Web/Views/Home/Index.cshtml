@@ -3,8 +3,16 @@
     ViewBag.Title = "Index";
 }
 
-<table>
 
-</table>
+<div>
+    <img src="@Url.Action("GetValidateCode","Home")" id="codeImg" onclick="this.src='@Url.Action("GetValidateCode","Home")?rd='+Date.now()"/>
 
-
+</div>
+@section scripts{
+    <script>
+        @*$('#codeImg').on('click', function () {
+            var src = '@Url.Action("GetValidateCode", "Home")';
+            $(this).prop('src', src + '?rd=' + Date.now())
+        });*@
+    </script>
+}

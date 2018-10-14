@@ -43,5 +43,16 @@ namespace ZZL.LeaveMessage.Web.Controllers
 
             return View();
         }
+
+
+
+        public ActionResult GetValidateCode()
+        {
+            ValidateCode validateCode = new ValidateCode(ValidateType.AllLetter);
+            
+            var codeBytes = validateCode.DrawValidateCode();
+
+            return File(codeBytes, "image/bmp");
+        }
     }
 }

@@ -32,7 +32,7 @@ namespace ZZL.LeaveMessage.Test
             var user = _userService.GetUserById(1);
             //var rows = _userService.AddUser(new UserEntity() { UserName = "zzl", Pwd = "123456" });
             //Assert.IsTrue(rows == 1);
-            var name =typeof(MessageService).Assembly.GetName().Name;
+            var name = typeof(MessageService).Assembly.GetName().Name;
         }
 
 
@@ -40,7 +40,16 @@ namespace ZZL.LeaveMessage.Test
         public void MD5Test()
         {
             var result = "123456".CreateToMD5(false);
-          
+
+        }
+
+        [TestMethod]
+        public void ValidateCodeTest()
+        {
+            ValidateCode validate = new ValidateCode(ValidateType.Mix);
+            //var code = validate.CreateValidateCode();
+            byte[] byts = validate.DrawValidateCode();
+            //Assert.IsTrue(validate._code.IsInt());
         }
     }
 }
