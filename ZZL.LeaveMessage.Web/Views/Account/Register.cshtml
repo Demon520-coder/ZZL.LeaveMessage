@@ -1,0 +1,68 @@
+﻿@model ZZL.LeaveMessage.Web.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationMessage("error", new { @class = "text-danger" })
+    @Html.Hidden("returnUrl", (string)ViewBag.returnUrl)
+    <div class="form-group">
+        <label class="col-md-2">用户名</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(s => s.UserName, new { @class = "form-control", placeholder = "请输入用户名", maxlength = 10 })
+            @Html.ValidationMessageFor(s => s.UserName, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label class="col-md-2">密码</label>
+            <div class="col-md-4">
+                @Html.PasswordFor(s => s.Pwd, new { @class = "form-control", placeholder = "请输入密码" })
+                @Html.ValidationMessageFor(s => s.Pwd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2">密码确认</label>
+            <div class="col-md-4">
+                @Html.PasswordFor(s => s.ConfirmPwd, new { @class = "form-control", placeholder = "密码确认" })
+                @Html.ValidationMessageFor(s => s.ConfirmPwd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2">邮箱</label>
+            <div class="col-md-4">
+                @Html.TextBoxFor(s => s.Email, new { @class = "form-control", placeholder = "请输入邮箱" })
+                @Html.ValidationMessageFor(s => s.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2">验证码</label>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(s => s.ValidateCode, new { @class = "form-control", placeholder = "输入验证码" })
+                    </div>
+                    <div class="col-md-3">
+                        <img src="@Url.Action("GetValidateCode","Home")" onclick="this.src='@Url.Action("GetValidateCode","Home")?rd='+Math.random()" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-md-2"></label>
+            <div class="col-md-4">
+                <input type="submit" value="注册" class="btn btn-dark" />
+                <a href="#" class="btn btn-danger">返回</a>
+            </div>
+        </div>
+    </div>
+
+
+
+}

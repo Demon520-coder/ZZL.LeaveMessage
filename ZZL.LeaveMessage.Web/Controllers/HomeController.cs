@@ -10,9 +10,10 @@ using System.Web.Security;
 
 namespace ZZL.LeaveMessage.Web.Controllers
 {
+
+    [Authorize]
     public class HomeController : Controller
     {
-
         private readonly IMessageService _messageService;
 
         public HomeController(IMessageService messageService)
@@ -26,31 +27,34 @@ namespace ZZL.LeaveMessage.Web.Controllers
             //var t = Convert.ToInt32("x");
             var list = _messageService.GetMeesageList();
 
-            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, "token", DateTime.Now, DateTime.Now.AddDays(1), false, "admin");
+            var name = User.Identity.Name;
+            //FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, "token", DateTime.Now, DateTime.Now.AddDays(1), false, "admin");
 
-            HttpCookie cookie = new HttpCookie("ticket");
-            cookie.Value = FormsAuthentication.Encrypt(ticket);
-            cookie.HttpOnly = true;
-            cookie.Expires = DateTime.Now.AddDays(1);
-            var reqCookie = Request.Cookies["ticket"];
-            if (reqCookie != null)
-            {
-                reqCookie.Expires = DateTime.Now.AddYears(-1);
-                Response.Cookies.Add(reqCookie);
-            }
+            //HttpCookie cookie = new HttpCookie("ticket");
+            //cookie.Value = FormsAuthentication.Encrypt(ticket);
+            //cookie.HttpOnly = true;
+            //cookie.Expires = DateTime.Now.AddDays(1);
+            //var reqCookie = Request.Cookies["ticket"];
+            //if (reqCookie != null)
+            //{
+            //    reqCookie.Expires = DateTime.Now.AddYears(-1);
+            //    Response.Cookies.Add(reqCookie);
+            //}
 
-            Response.Cookies.Add(cookie);
+            //Response.Cookies.Add(cookie);
 
             return View();
         }
 
 
-
+        [AllowAnonymous]
         public ActionResult GetValidateCode()
         {
-            ValidateCode validateCode = new ValidateCode(ValidateType.AllLetter);
-            
-            var codeBytes = validateCode.DrawValidateCode();
+            ValidateCode validateCode = new ValidateCode();
+
+            var codeBytes = validateCode.DrawValidateCode(validateCode._operCode);
+
+            TempData["validateCode"] = validateCode._codeResult;
 
             return File(codeBytes, "image/bmp");
         }

@@ -10,11 +10,13 @@ using ZZL.LeaveMessage.Entity;
 namespace ZZL.LeaveMessage.IService
 {
     public interface IUserService
-    {       
+    {
         UserEntity GetUser(string userName);
 
         UserEntity GetUserById(int id);
 
-        bool AddUser(UserEntity user);
+        bool Register(UserEntity user);
+
+        UserEntity Login(string userName, string pwd);
     }
 }

@@ -12,5 +12,7 @@ namespace ZZL.LeaveMessage.Entity
 
         public string Pwd { get; set; }
 
+        public string Email { get; set; }
+
     }
 }

@@ -19,7 +19,7 @@ namespace ZZL.LeaveMessage.Service
             _userDao = new UserDao();
         }
 
-        public bool AddUser(UserEntity user)
+        public bool Register(UserEntity user)
         {
             return _userDao.AddUser(user);
         }
@@ -32,6 +32,11 @@ namespace ZZL.LeaveMessage.Service
         public UserEntity GetUserById(int id)
         {
             return _userDao.GetUserById(id);
+        }
+
+        public UserEntity Login(string userName, string pwd)
+        {
+            return _userDao.GetUserByNameAndPwd(userName, pwd);
         }
     }
 }

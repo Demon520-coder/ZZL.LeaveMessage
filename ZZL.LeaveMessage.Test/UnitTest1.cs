@@ -51,5 +51,12 @@ namespace ZZL.LeaveMessage.Test
             byte[] byts = validate.DrawValidateCode();
             //Assert.IsTrue(validate._code.IsInt());
         }
+
+        [TestMethod]
+        public void OperValidateCode()
+        {
+            ValidateCode validate = new ValidateCode();
+            
+        }
     }
 }

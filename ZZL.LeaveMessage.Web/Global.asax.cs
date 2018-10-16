@@ -18,6 +18,7 @@ namespace ZZL.LeaveMessage.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BindConfig.RegisterBundle(BundleTable.Bundles);
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             //autofac注入
             AutofacHelper autoFac = new AutofacHelper();
             autoFac.Register();
@@ -58,6 +59,6 @@ namespace ZZL.LeaveMessage.Web
 
             }
                  
-        }
+            }
     }
 }

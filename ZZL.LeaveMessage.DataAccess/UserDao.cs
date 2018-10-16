@@ -10,6 +10,13 @@ namespace ZZL.LeaveMessage.DataAccess
 {
     public class UserDao : BaseDao<UserEntity>
     {
+        public UserEntity GetUserByNameAndPwd(string userName, string pwd)
+        {
+            string sql = "SELECT * FROM TB_USER WHERE UserName=@userName AND Pwd=@pwd AND IsDeleted=0";
+
+            return GetModel(sql, new { userName = userName, pwd = pwd });
+        }
+
         public UserEntity GetUser(string userName)
         {
             string sql = "SELECT * FROM TB_USER WHERE UserName=@uname";
@@ -26,7 +33,7 @@ namespace ZZL.LeaveMessage.DataAccess
 
         public bool AddUser(UserEntity user)
         {
-            string sql = "INSERT INTO TB_USER(UserName,Pwd,CreateTime,IsDeleted) VALUES(@UserName,@Pwd,@CreateTime,@IsDeleted)";
+            string sql = "INSERT INTO TB_USER(UserName,Pwd,CreateTime,IsDeleted,Email) VALUES(@UserName,@Pwd,@CreateTime,@IsDeleted,@Email)";
             return Execute(sql, user) > 0;
         }
     }
