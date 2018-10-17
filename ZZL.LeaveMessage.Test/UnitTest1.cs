@@ -48,7 +48,7 @@ namespace ZZL.LeaveMessage.Test
         {
             ValidateCode validate = new ValidateCode(ValidateType.Mix);
             //var code = validate.CreateValidateCode();
-            byte[] byts = validate.DrawValidateCode();
+            //byte[] byts = validate.DrawValidateCode();
             //Assert.IsTrue(validate._code.IsInt());
         }
 

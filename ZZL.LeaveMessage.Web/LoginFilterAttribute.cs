@@ -37,7 +37,8 @@ namespace ZZL.LeaveMessage.Web
                     return;
                 }
             }
-
+            
+            
             base.OnAuthorization(filterContext);
         }
     }

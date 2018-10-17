@@ -12,5 +12,7 @@ namespace ZZL.LeaveMessage.IService
     public interface IMessageService
     {
         IEnumerable<MessageDto> GetMeesageList();
+
+        bool Add(MessageEntity message);
     }
 }

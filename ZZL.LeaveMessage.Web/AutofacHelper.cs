@@ -33,6 +33,7 @@ namespace ZZL.LeaveMessage.Web
             Assembly services = Assembly.Load("ZZL.LeaveMessage.Service");
             //创建services中的所有类的instance以此类的实现接口存储
             _builder.RegisterTypes(services.GetTypes()).AsImplementedInterfaces();
+           
             //_builder.RegisterType<MessageService>().As<IMessageService>();
             var container = _builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

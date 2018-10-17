@@ -19,6 +19,11 @@ namespace ZZL.LeaveMessage.Service
             _messageDao = new MessageDao();
         }
 
+        public bool Add(MessageEntity message)
+        {
+            return _messageDao.Add(message);
+        }
+
         public IEnumerable<MessageDto> GetMeesageList()
         {
             return _messageDao.GetMessageEntities();
