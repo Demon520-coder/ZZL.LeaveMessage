@@ -9,6 +9,7 @@ using ZZL.LeaveMessage.IService;
 using System.Web.Security;
 using ZZL.LeaveMessage.Web.Models;
 using ZZL.LeaveMessage.Entity;
+using System.Diagnostics;
 
 namespace ZZL.LeaveMessage.Web.Controllers
 {
@@ -28,7 +29,8 @@ namespace ZZL.LeaveMessage.Web.Controllers
         public ActionResult Index(int? pageIndex = 1, int? pageSize = 10)
         {
             pageIndex = pageIndex >= 1 ? pageIndex : 1;
-            pageSize = pageSize >= 1 ? pageSize : 10;
+            Debug.WriteLineIf(pageIndex > 10, $"pageIndex={pageIndex}");
+            pageSize = pageSize >= 1 ? pageSize : 10;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
             var list = _messageService.GetMeesageList();
 
             return View(list.ToPagedList(pageIndex.Value, pageSize.Value));
