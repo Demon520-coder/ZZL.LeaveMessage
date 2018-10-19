@@ -17,7 +17,12 @@ namespace ZZL.LeaveMessage.Frm
         {
             InitializeComponent();
             this.button1.Width = 200;
-            ObosoloteTest();
+
+            //Student stu = new Student("zzl");
+            SingleInstance instance = SingleInstance._singleInstance;
+            SingleInstance instance2 = SingleInstance._singleInstance;
+            SingleInstance instance3 = SingleInstance._singleInstance;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
