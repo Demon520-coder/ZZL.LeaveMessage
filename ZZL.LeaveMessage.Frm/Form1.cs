@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace ZZL.LeaveMessage.Frm
         {
             InitializeComponent();
             this.button1.Width = 200;
+            ObosoloteTest();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,6 +36,18 @@ namespace ZZL.LeaveMessage.Frm
         {
             Button btn = (Button)o;
             btn.Text = "我是button2";
+        }
+
+        [Conditional("DEBUG")]
+        private void DebugIf()
+        {
+            MessageBox.Show("DebugIf");
+        }
+
+        [Obsolete("该方法将被弃用,请使用另外的方法")]
+        private void ObosoloteTest()
+        {
+            MessageBox.Show(nameof(this.ObosoloteTest));
         }
     }
 }

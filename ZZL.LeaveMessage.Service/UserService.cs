@@ -10,9 +10,9 @@ using ZZL.LeaveMessage.IService;
 
 namespace ZZL.LeaveMessage.Service
 {
-    public class UserService :  IUserService
+    public class UserService : IUserService, ICloneable
     {
-        private readonly UserDao _userDao;
+        public readonly UserDao _userDao;
 
         public UserService()
         {
@@ -37,6 +37,16 @@ namespace ZZL.LeaveMessage.Service
         public UserEntity Login(string userName, string pwd)
         {
             return _userDao.GetUserByNameAndPwd(userName, pwd);
+        }
+
+        public IUserService CloneObj()
+        {
+            return (UserService)this.MemberwiseClone();
+        }
+
+        public object Clone()
+        {
+            return new UserService();
         }
     }
 }

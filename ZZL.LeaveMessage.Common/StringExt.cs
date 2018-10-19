@@ -48,17 +48,18 @@ namespace ZZL.LeaveMessage.Common
         /// <returns></returns>
         public static string CreateToMD5(this string str, bool isToLower = true)
         {
-            MD5 md = MD5.Create();
-            byte[] byts = Encoding.UTF8.GetBytes(str);
-            byte[] hashByts = md.ComputeHash(byts);
-            StringBuilder builder = new StringBuilder(32);
-            foreach (var item in hashByts)
+            using (MD5 md = MD5.Create())
             {
-                builder.Append(item.ToString(string.Format("{0}", isToLower ? "x" : "X2")));
+                byte[] byts = Encoding.UTF8.GetBytes(str);
+                byte[] hashByts = md.ComputeHash(byts);
+                StringBuilder builder = new StringBuilder(32);
+                foreach (var item in hashByts)
+                {
+                    builder.Append(item.ToString(string.Format("{0}", isToLower ? "x" : "X2")));
+                }
+
+                return builder.ToString();
             }
-
-            return builder.ToString();
-
         }
 
     }

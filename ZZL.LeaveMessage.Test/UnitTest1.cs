@@ -56,7 +56,16 @@ namespace ZZL.LeaveMessage.Test
         public void OperValidateCode()
         {
             ValidateCode validate = new ValidateCode();
-            
+
+        }
+
+        [TestMethod]
+        public void CloneTest()
+        {
+            var cloneObj = (UserService)_userService.CloneObj(); //浅复制;
+            var depetCloneObj = (UserService)_userService.Clone(); //深度复制;
+            Assert.AreSame(_userService, cloneObj);
+            Assert.AreSame(_userService, depetCloneObj);
         }
     }
 }

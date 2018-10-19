@@ -9,7 +9,7 @@ using ZZL.LeaveMessage.Entity;
 
 namespace ZZL.LeaveMessage.IService
 {
-    public interface IUserService
+    public interface IUserService : ICloneable
     {
         UserEntity GetUser(string userName);
 
@@ -18,5 +18,7 @@ namespace ZZL.LeaveMessage.IService
         bool Register(UserEntity user);
 
         UserEntity Login(string userName, string pwd);
+
+        IUserService CloneObj();
     }
 }
